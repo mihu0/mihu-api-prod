@@ -32,8 +32,8 @@ app.all("*", (req, res) =>res.send("You've tried reaching a route that doesn't e
 
 if (APP_PORT) {
     
-    app.listen(APP_PORT, () => console.log(`Listening  on port ${APP_PORT}.`));
 }
+app.listen(APP_PORT||5000, () => console.log(`Listening  on port ${APP_PORT}.`));
 
 // This is to prevent the server from crashing and showinfg large error message and it shows just the error accurately
 // process.on("unhandledRejection",(err,promise)=>{
