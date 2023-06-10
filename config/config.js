@@ -13,4 +13,5 @@ export const {
     REDIRECT_URI,
     REFRESH_TOKEN,
     STRIPE_SECRET_KEY,
+    CALLBACK_LINK
 } = process.env;

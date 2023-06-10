@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { STRIPE_SECRET_KEY } from "../config/config.js";
+import { CALLBACK_LINK, STRIPE_SECRET_KEY } from "../config/config.js";
 const stripe = Stripe(STRIPE_SECRET_KEY);
 const items = new Map([
   [1, { name: "A Chair", price: 400 }],
@@ -33,8 +33,8 @@ export async function stripePayment(req, res) {
               quantity:item.quantity
           }
         }),
-        success_url: "http://localhost:3000/checkout/success",
-        cancel_url: "http://localhost:3000/checkout/error",
+        success_url: `${CALLBACK_LINK}checkout/success`,
+        cancel_url:  `${CALLBACK_LINK}checkout/error`,
       });
       console.log("first",session)
       res.json({url:session.url})
