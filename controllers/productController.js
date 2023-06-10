@@ -227,3 +227,17 @@ export async function getBrands(req, res){
     res.json({ success:false,error: error });
   }
 }
+
+export async function deleteProductsByVender(req, res) {
+  let brand = req.body.brand;
+  console.log(brand)
+  try {
+    Product.deleteMany({ vendor: brand }).then(result=>{
+      res.status(200).json({products:result})
+    }).catch(err=>{
+      res.status(401).json({error:err})
+    })
+  } catch (error) {
+    res.json({ error: error });
+  }
+}

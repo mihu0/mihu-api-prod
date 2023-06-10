@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
     isVendor: { type: Boolean, default: false },
     img: { type: String },
     isSeller: { type: Boolean, default: false },
-    favorites: [{ prodId: { type: mongoose.Schema.Types.ObjectId } }],
+    favorites: [{ type: mongoose.Schema.Types.ObjectId } ],
   },
   { timestamps: true }
 );
