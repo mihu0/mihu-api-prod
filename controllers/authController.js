@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { User } from "../models/index.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import crypto from "crypto"
+import { CALLBACK_LINK } from "../config/config.js";
 
 export async function register(req, res, next) {
     const { name, email, password, phone, address, isAdmin, isVendor, isSeller } =
@@ -81,7 +82,7 @@ export async function forgotPassword(req, res, next) {
         console.log(resetToken)
         await user.save();
 
-        const resetUrl = `http://localhost:3000/resetpassword/${resetToken}`;
+        const resetUrl = `${CALLBACK_LINK}resetpassword/${resetToken}`;
         const message = `
         <h1>You have requested a new Password</h1>
         <p>Please go To the following link to reset your password.</p>
